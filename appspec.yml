@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/final-python
+hooks:
+  BeforeInstall:
+    - location: scripts/chmod.sh
+      timeout: 60
+      runas: root
+  AfterInstall:
+    - location: scripts/deploy.sh
+      timeout: 300
+      runas: root
